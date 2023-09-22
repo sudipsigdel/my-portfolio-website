@@ -1076,19 +1076,13 @@ Reach me at: hello@sudipsigdel.com.np
             </div>
 
             <div class="col-lg-8 mt-5 mt-lg-0">
-              <form
-                action="forms/contact.php"
-                method="post"
-                role="form"
-                class="php-email-form"
-              >
+              <form id="contact-form">
                 <div class="row">
                   <div class="col-md-6 form-group">
                     <input
                       type="text"
-                      name="name"
+                      name="entry.2005620554"
                       class="form-control"
-                      id="name"
                       placeholder="Your Name"
                       required
                     />
@@ -1097,19 +1091,19 @@ Reach me at: hello@sudipsigdel.com.np
                     <input
                       type="email"
                       class="form-control"
-                      name="email"
-                      id="email"
+                      name="entry.1045781291"
                       placeholder="Your Email"
                       required
+                      id="email-input"
                     />
+                    <div id="email-validation-error" class="text-danger"></div>
                   </div>
                 </div>
                 <div class="form-group mt-3">
                   <input
                     type="text"
                     class="form-control"
-                    name="subject"
-                    id="subject"
+                    name="entry.1166974658"
                     placeholder="Subject"
                     required
                   />
@@ -1117,23 +1111,81 @@ Reach me at: hello@sudipsigdel.com.np
                 <div class="form-group mt-3">
                   <textarea
                     class="form-control"
-                    name="message"
+                    name="entry.839337160"
                     rows="5"
                     placeholder="Message"
                     required
                   ></textarea>
                 </div>
-                <div class="my-3">
-                  <div class="loading">Loading</div>
-                  <div class="error-message"></div>
-                  <div class="sent-message">
-                    Your message has been sent. Thank you!
-                  </div>
-                </div>
+
                 <div class="text-center">
-                  <button type="submit">Send Message</button>
+                  <button type="submit" id="submit-button">Send Message</button>
                 </div>
               </form>
+
+              <div id="alert-container" style="margin-top: 1rem"></div>
+
+              <script>
+                function validateEmail(email) {
+                  const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+                  return emailRegex.test(email);
+                }
+
+                // Add a JavaScript function to handle form submission
+                document
+                  .getElementById("contact-form")
+                  .addEventListener("submit", function (event) {
+                    // Prevent the default form submission behavior
+                    event.preventDefault();
+
+                    const emailInput = document.getElementById("email-input");
+                    const emailValidationError = document.getElementById(
+                      "email-validation-error"
+                    );
+
+                    if (!validateEmail(emailInput.value)) {
+                      emailValidationError.textContent =
+                        "Please enter a valid email address.";
+                      return;
+                    } else {
+                      emailValidationError.textContent = "";
+                    }
+
+                    // Function to submit the form data to Google Forms
+                    function submitToGoogleForms() {
+                      // Replace the action URL with your Google Form URL
+                      const googleFormURL =
+                        "https://docs.google.com/forms/d/e/1FAIpQLSe445fEz_KID0WGWdOP-qt-8mlM0MPDGiZdSOZ92G4HMCpgYQ/formResponse";
+
+                      // Serialize form data
+                      const formData = new FormData(
+                        document.getElementById("contact-form")
+                      );
+
+                      // Make a POST request to the Google Form URL
+                      fetch(googleFormURL, {
+                        method: "POST",
+                        body: formData,
+                      });
+                    }
+
+                    // Submit the form data to Google Forms
+                    submitToGoogleForms();
+
+                    // Reset the form
+                    document.getElementById("contact-form").reset();
+
+                    // Display an alert on the same page
+                    const alertContainer =
+                      document.getElementById("alert-container");
+                    alertContainer.innerHTML =
+                      '<div class="alert alert-success">Form submitted successfully!</div>';
+
+                    setTimeout(function () {
+                      alertContainer.innerHTML = ""; // Remove the alert element
+                    }, 3000);
+                  });
+              </script>
             </div>
           </div>
         </div>
