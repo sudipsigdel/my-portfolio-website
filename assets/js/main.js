@@ -221,23 +221,6 @@
   });
 
   /**
-   * Portfolio details slider
-   */
-  new Swiper(".portfolio-details-slider", {
-    speed: 400,
-    loop: true,
-    autoplay: {
-      delay: 5000,
-      disableOnInteraction: false,
-    },
-    pagination: {
-      el: ".swiper-pagination",
-      type: "bullets",
-      clickable: true,
-    },
-  });
-
-  /**
    * Testimonials slider
    */
   new Swiper(".testimonials-slider", {
@@ -291,4 +274,62 @@
    */
   var currentYear = new Date().getFullYear();
   document.getElementById("currentYear").textContent = currentYear;
+
+  /**
+   * Contact form
+   */
+  function validateEmail(email) {
+    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+    return emailRegex.test(email);
+  }
+
+  // Add a JavaScript function to handle form submission
+  document
+    .getElementById("contact-form")
+    .addEventListener("submit", function (event) {
+      // Prevent the default form submission behavior
+      event.preventDefault();
+
+      const emailInput = document.getElementById("email-input");
+      const emailValidationError = document.getElementById(
+        "email-validation-error"
+      );
+
+      if (!validateEmail(emailInput.value)) {
+        emailValidationError.textContent =
+          "Please enter a valid email address.";
+        return;
+      } else {
+        emailValidationError.textContent = "";
+      }
+
+      function submitToGoogleForms() {
+        const googleFormURL =
+          "https://docs.google.com/forms/d/e/1FAIpQLSe445fEz_KID0WGWdOP-qt-8mlM0MPDGiZdSOZ92G4HMCpgYQ/formResponse";
+
+        // Serialize form data
+        const formData = new FormData(document.getElementById("contact-form"));
+
+        // Make a POST request to the Google Form URL
+        fetch(googleFormURL, {
+          method: "POST",
+          body: formData,
+        });
+      }
+
+      // Submit the form data to Google Forms
+      submitToGoogleForms();
+
+      // Reset the form
+      document.getElementById("contact-form").reset();
+
+      // Display an alert on the same page
+      const alertContainer = document.getElementById("alert-container");
+      alertContainer.innerHTML =
+        '<div class="alert alert-success">Your Message is sent successfully!</div>';
+
+      setTimeout(function () {
+        alertContainer.innerHTML = ""; // Remove the alert element
+      }, 3000);
+    });
 })();
