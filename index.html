@@ -297,7 +297,7 @@ Reach me at: hello@sudipsigdel.com.np
                     </li>
                     <li>
                       <i class="bi bi-chevron-right"></i> <strong>Age:</strong>
-                      <span>21</span>
+                      <span id="age"></span>
                     </li>
                     <li>
                       <i class="bi bi-chevron-right"></i>
@@ -323,7 +323,6 @@ Reach me at: hello@sudipsigdel.com.np
                 final, polished deliverable.
               </p>
             </div>
-            
           </div>
         </div>
       </section>
@@ -565,7 +564,7 @@ Reach me at: hello@sudipsigdel.com.np
               <h3 class="resume-title">Education</h3>
               <div class="resume-item">
                 <h4>Bachelors in Computing</h4>
-                <h5>2021 - Running</h5>
+                <h5>2021 - 2024</h5>
                 <p><b>London Metropolitan University</b></p>
                 <p><em>BSc. (Hons) Computing</em></p>
                 <p><em>Islington College</em></p>
@@ -592,7 +591,6 @@ Reach me at: hello@sudipsigdel.com.np
             <div class="col-lg-6">
               <h3 class="resume-title">Professional Experience</h3>
 
-              
               <!-- <div class="resume-item">
                 <h4>Front-End Intern</h4>
                 <h5>Jan 2024 - Present</h5>
@@ -641,18 +639,22 @@ Reach me at: hello@sudipsigdel.com.np
                     Designed and developed a dynamic E-commerce website
                     featuring products of a shop using <b>Java</b>.
                   </li>
+                  <li>
+                    Developed a machine learning model to predict the loan
+                    acceptance using <b>Python</b>.
+                  </li>
                 </ul>
               </div>
 
               <div class="resume-item">
                 <h4>FREELANCING</h4>
                 <h5>2018-Present</h5>
-                <p><b>Social Media Manager:</b></p>
+                <p><b>Social Media Manager</b></p>
                 <ul>
                   <li>Worked as a social media manager.</li>
                 </ul>
 
-                <p><b>Graphic Designer:</b></p>
+                <p><b>Graphic Designer</b></p>
                 <ul>
                   <li>
                     Logo and poster designing for various facebook and instagram
@@ -978,23 +980,23 @@ Reach me at: hello@sudipsigdel.com.np
 
               <div class="swiper-slide">
                 <div class="testimonial-item">
-                    <img
-                      src="assets/img/testimonials/ridi.jpg"
-                      class="testimonial-img"
-                      alt=""
-                    />
-                    <h3>Ridisha Shrestha</h3>
-                  </a>
+                  <img
+                    src="assets/img/testimonials/ridi.jpg"
+                    class="testimonial-img"
+                    alt=""
+                  />
+                  <h3>Ridisha Shrestha</h3>
                   <p>
                     <i class="bx bxs-quote-alt-left quote-icon-left"></i>
                     Sudip is a really hardworking person who puts all his
-                    efforts and diligently does all the jobs he is given. He is truly amazing in all that he does.
+                    efforts and diligently does all the jobs he is given. He is
+                    truly amazing in all that he does.
                     <i class="bx bxs-quote-alt-right quote-icon-right"></i>
                   </p>
                 </div>
               </div>
               <!-- End testimonial item -->
-              
+
               <div class="swiper-slide">
                 <div class="testimonial-item">
                   <a href="http://www.bhupendraneupane.com.np/" target="_blank">
@@ -1136,9 +1138,7 @@ Reach me at: hello@sudipsigdel.com.np
                       emailValidationError.textContent = "";
                     }
 
-                    // Function to submit the form data to Google Forms
                     function submitToGoogleForms() {
-                      // Replace the action URL with your Google Form URL
                       const googleFormURL =
                         "https://docs.google.com/forms/d/e/1FAIpQLSe445fEz_KID0WGWdOP-qt-8mlM0MPDGiZdSOZ92G4HMCpgYQ/formResponse";
 
@@ -1211,12 +1211,10 @@ Reach me at: hello@sudipsigdel.com.np
           ></a>
         </div>
         <div class="copyright">
-          &copy; <span id="currentYear"></span> <strong><span>Sudip Sigdel</span></strong>. All Rights Reserved
+          &copy; <span id="currentYear"></span>
+          <strong><span>Sudip Sigdel</span></strong
+          >. All Rights Reserved
         </div>
-        <script>
-          var currentYear = new Date().getFullYear();
-          document.getElementById('currentYear').textContent = currentYear;
-        </script>
         <div class="credits">
           Designed by
           <a
